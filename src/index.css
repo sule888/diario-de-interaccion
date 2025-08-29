@@ -1,0 +1,329 @@
+/* ===========================
+   DESIGN TOKENS (tema base)
+   =========================== */
+:root {
+  --primary-font: "Miriam Libre", sans-serif;
+  /* Paleta principal */
+  --rose-50: #f5ebeb;
+  --rose-200: #e1c1c0;
+  --rose-300: #ce9d9b;
+  --rose-500: #a4605e;
+  --rose-700: #613c3b;
+
+  /* Derivaciones (positivas/negativas y estados) */
+  --bg: var(--rose-50);
+  --surface: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b6b6b;
+
+  --primary: var(--rose-200);
+  --primary-2: var(--rose-300);
+  --primary-3: var(--rose-500);
+  --primary-4: var(--rose-700);
+
+  --success: #2f855a; /* positivo */
+  --warning: #b7791f;
+  --danger: #c53030; /* negativo */
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+  --transition: 180ms ease;
+}
+
+/* ===========================
+   RESET + BASE
+   =========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--primary-font);
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg), #ffffff 60%);
+}
+.miriam-libre {
+  font-family: var(--primary-font);
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+/* Mejores focos por accesibilidad */
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--primary-3) 65%, white);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Contenedor base para pantallas */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* Tipografía utilitaria */
+.h1 {
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.h2 {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 600;
+}
+.p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.muted {
+  color: var(--muted);
+}
+
+/* Cards / superficies */
+.card {
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--primary) 20%, #0000);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+/* ===========================
+   BOTONES (variantes)
+   =========================== */
+.btn {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition),
+    border-color var(--transition), box-shadow var(--transition),
+    color var(--transition);
+  font-family: var(--primary-font);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+/* Primario (rosa) */
+.btn--primary {
+  background: var(--primary);
+  color: #2b2b2b;
+  border-color: color-mix(in oklab, var(--primary) 65%, #0000);
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary:hover {
+  background: var(--primary-2);
+  border-color: color-mix(in oklab, var(--primary-2) 70%, #0000);
+}
+.btn--primary:active {
+  background: var(--primary-3);
+  color: #fff;
+}
+
+/* Fantasma / texto */
+.btn--ghost {
+  background: transparent;
+  color: var(--primary-4);
+  border-color: color-mix(in oklab, var(--primary-4) 25%, #0000);
+}
+.btn--ghost:hover {
+  background: color-mix(in oklab, var(--primary) 20%, #fff);
+}
+
+/* Éxito y peligro para acciones CRUD/confirmaciones */
+.btn--success {
+  background: color-mix(in oklab, var(--success) 15%, #fff);
+  color: #0f3d2b;
+  border-color: color-mix(in oklab, var(--success) 30%, #0000);
+}
+.btn--success:hover {
+  background: color-mix(in oklab, var(--success) 25%, #fff);
+}
+
+.btn--danger {
+  background: color-mix(in oklab, var(--danger) 12%, #fff);
+  color: #5a0c0c;
+  border-color: color-mix(in oklab, var(--danger) 30%, #0000);
+}
+.btn--danger:hover {
+  background: color-mix(in oklab, var(--danger) 22%, #fff);
+}
+
+/* ===========================
+   FORM (inputs básicos)
+   =========================== */
+.field {
+  display: grid;
+  gap: 6px;
+}
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-4);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in oklab, var(--primary) 30%, #0000);
+  background: #fff;
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition),
+    background var(--transition);
+}
+.input::placeholder {
+  color: color-mix(in oklab, var(--muted) 80%, #0000);
+}
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--primary-3);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 35%, #0000);
+}
+.help {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===========================
+   MODAL (base accesible)
+   =========================== */
+.modal-backdrop {
+  position: fixed;
+  inset: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: color-mix(in oklab, #000 45%, #0000);
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 2vw, 24px);
+  z-index: 3;
+}
+.modal {
+  width: min(760px, 100%);
+  max-height: 92vh; /* límite vertical */
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--primary) 25%, #0000);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.modal__header,
+.modal__footer {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: color-mix(in oklab, var(--primary) 15%, #fff);
+  flex: 0 0 auto;
+}
+.modal__title {
+  font-weight: 700;
+}
+.modal__body {
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  overflow: auto;
+  flex: 1 1 auto;
+  overscroll-behavior: contain;
+}
+.modal__body > * {
+  min-width: 0;
+}
+
+/* ===========================
+   TABLA (lista futura)
+   =========================== */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--primary) 25%, #0000);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.table thead th {
+  text-align: left;
+  padding: 12px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary-4);
+  background: color-mix(in oklab, var(--primary) 18%, #fff);
+}
+.table tbody td {
+  padding: 12px;
+  border-top: 1px solid color-mix(in oklab, var(--primary) 20%, #0000);
+}
+
+/* ===========================
+   UTILIDADES
+   =========================== */
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.row-wrap {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.col {
+  display: grid;
+  gap: 12px;
+}
+.center {
+  display: grid;
+  place-items: center;
+}
+.spread {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--primary) 25%, #fff);
+  color: var(--primary-4);
+}

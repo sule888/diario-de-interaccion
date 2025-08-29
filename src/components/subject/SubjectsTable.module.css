@@ -1,0 +1,17 @@
+.tableWrap {
+  overflow: auto;
+}
+
+.row {
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+.row:hover {
+  background: color-mix(in oklab, var(--primary) 16%, #fff);
+}
+
+.empty {
+  text-align: center;
+  padding: 18px;
+  color: var(--muted);
+}
